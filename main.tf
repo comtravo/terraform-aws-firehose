@@ -128,3 +128,8 @@ resource "aws_kinesis_firehose_delivery_stream" "stream" {
     }
   }
 }
+
+output "arn" {
+  value       = "${aws_kinesis_firehose_delivery_stream.stream.arn}"
+  description = "ARN of the Kinesis Firehose"
+}

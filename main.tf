@@ -19,7 +19,7 @@ variable region {
 }
 
 variable destination {
-  default = "s3"
+  default     = "s3"
   description = "Kinesis Firehose Destination"
 }
 

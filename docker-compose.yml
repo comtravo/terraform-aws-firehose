@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: ct-terraform-aws-firehose-module
+    image: ct-terraform-aws-firehose-module:${GIT_COMMIT:-latest}
     environment:
       - AWS_REGION=us-east-1
       - AWS_DEFAULT_REGION=us-east-1

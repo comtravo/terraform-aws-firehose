@@ -13,7 +13,7 @@ pipeline {
     stage("Checkout SCM") {
       steps {
         script {
-          ctCheckoutMultiBranch(wipeWorkspace: true, noTags: true, url: 'git@github.com:comtravo/terraform-aws-firehose.git')
+          ctCheckout(revision: getMultiBranchName(), wipeWorkspace: true, noTags: true, url: 'git@github.com:comtravo/terraform-aws-firehose.git')
         }
       }
     }

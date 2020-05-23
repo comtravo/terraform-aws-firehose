@@ -1,4 +1,4 @@
-FROM comtravo/terraform:py3-0.12.25-1.0.0
+FROM puneethn/terraform-test-workhorse:0.12.25
 
-WORKDIR /opt/terraform
+WORKDIR /go/src/github.com/comtravo/terraform-aws-firehose
 COPY . .

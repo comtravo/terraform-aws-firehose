@@ -4,4 +4,4 @@ services:
   terraform:
     command: bash
     volumes:
-      - ./:/opt/terraform
+      - ./:/go/src/github.com/comtravo/terraform-aws-firehose

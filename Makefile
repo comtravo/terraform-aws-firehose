@@ -16,7 +16,8 @@ build:
 	@$(DOCKER_COMPOSE) build
 
 test:
-	@cd tests && terraform init && terraform plan && terraform apply -auto-approve
+	@cd tests && go test -v -tags=unit
+	@cd tests && go test -v -tags=integration
 
 test-docker:
 	@$(DOCKER_COMPOSE) run --rm terraform make test
@@ -27,7 +28,7 @@ develop:
 	@$(DOCKER_COMPOSE_DEVELOP) run --rm terraform bash
 	@$(DOCKER_COMPOSE_DEVELOP) down -v
 
-generate-docs:
+generate-docs: fmt lint
 	@$(GENERATE_DOCS_COMMAND)
 
 clean:

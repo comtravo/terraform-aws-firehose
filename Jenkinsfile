@@ -23,7 +23,7 @@ pipeline {
         script {
           try {
             sh(label: 'Building docker image', script: "make build")
-            sh(label: 'Testing docker image', script: "make test")
+            sh(label: 'Testing docker image', script: "make test-docker")
           } finally {
             sh(label: 'Cleanup', script: "make clean")
           }

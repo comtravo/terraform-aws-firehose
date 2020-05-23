@@ -20,6 +20,7 @@ test:
 
 test-docker:
 	@$(DOCKER_COMPOSE) run --rm terraform make test
+	@$(DOCKER_COMPOSE) run --rm terraform make lint
 	@$(DOCKER_COMPOSE) down -v
 
 develop:
@@ -31,5 +32,8 @@ generate-docs:
 
 clean:
 	@$(DOCKER_COMPOSE) down -v
-	@rm tests/terraform.tfstate tests/terraform.tfstate.backup
+	@rm -f tests/terraform.tfstate tests/terraform.tfstate.backup
 	@rm -rf ./terraform
+
+logs:
+	@$(DOCKER_COMPOSE) logs -f

@@ -122,21 +122,10 @@ data "aws_iam_policy_document" "firehose_role" {
 
     resources = [
       lookup(var.s3_configuration, "bucket_arn"),
-      "${lookup(var.s3_configuration, "bucket_arn")}/*",
-      "arn:aws:s3:::%FIREHOSE_BUCKET_NAME%",
-      "arn:aws:s3:::%FIREHOSE_BUCKET_NAME%/*",
+      "${lookup(var.s3_configuration, "bucket_arn")}/*"
     ]
   }
 
-  statement {
-    actions = [
-      "lambda:InvokeFunction",
-      "lambda:GetFunctionConfiguration",
-    ]
-    resources = [
-      "arn:aws:lambda:${var.region}:${var.account_id}:function:%FIREHOSE_DEFAULT_FUNCTION%:%FIREHOSE_DEFAULT_VERSION%",
-    ]
-  }
   statement {
     actions = [
       "logs:*",

@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This module create a Kinesis Firehose and all the resources related to it to log to S3.
+This module creates a Kinesis Firehose and all the resources related to it to log to S3.
 
 ## Usage  
 Checkout [test.tf](./tests/test.tf) for how to use this module

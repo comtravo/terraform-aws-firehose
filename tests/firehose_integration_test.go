@@ -25,5 +25,5 @@ func TestFirehoseApply(t *testing.T) {
 	assert.Equal(t, firehose_disabled_output, "")
 
 	firehose_enabled_output := terraform.Output(t, terratestOptions, "firehose_enabled")
-	assert.Equal(t, firehose_enabled_output, "arn:aws:firehose:us-east-1:000000000000:deliverystream/firehose_1")
+	assert.Equal(t, firehose_enabled_output, "arn:aws:firehose:us-east-1:000000000000:deliverystream/firehose_enabled")
 }

@@ -43,7 +43,7 @@ module "firehose_enabled" {
 
   enable = true
 
-  name        = "firehose_1"
+  name        = "firehose_enabled"
   account_id  = data.aws_caller_identity.current.account_id
   region      = data.aws_region.current.name
   destination = "s3"

@@ -1,7 +1,8 @@
 #! make
 
 DOCKER_COMPOSE=docker-compose -f ./docker-compose.yml
-DOCKER_COMPOSE_DEVELOP=$(DOCKER_COMPOSE) -f ./docker-compose.develop.yml
+DOCKER_COMPOSE_RUN=$(DOCKER_COMPOSE) run --rm --service-port
+	DOCKER_COMPOSE_DEVELOP=$(DOCKER_COMPOSE) -f ./docker-compose.develop.yml run --rm --service-port
 
 GENERATE_DOCS_COMMAND:=terraform-docs --sort-inputs-by-required markdown table . > README.md
 
@@ -20,12 +21,12 @@ test:
 	@cd tests && go test -v -tags=integration
 
 test-docker:
-	@$(DOCKER_COMPOSE) run --rm terraform make test
-	@$(DOCKER_COMPOSE) run --rm terraform make lint
+	@$(DOCKER_COMPOSE_RUN) terraform make test
+	@$(DOCKER_COMPOSE_RUN) terraform make lint
 	@$(DOCKER_COMPOSE) down -v
 
 develop:
-	@$(DOCKER_COMPOSE_DEVELOP) run --rm terraform bash
+	@$(DOCKER_COMPOSE_DEVELOP) terraform bash
 	@$(DOCKER_COMPOSE_DEVELOP) down -v
 
 generate-docs: fmt lint

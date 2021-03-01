@@ -16,7 +16,6 @@ build:
 	@$(DOCKER_COMPOSE) build
 
 test:
-	@cd tests && go test -v -tags=unit
 	@cd tests && go test -v -tags=integration
 
 test-docker:

@@ -1,12 +1,14 @@
-
 // +build integration
 
 package test
 
 import (
+	"fmt"
+	"regexp"
+	"testing"
+
 	"github.com/gruntwork-io/terratest/modules/terraform"
 	"github.com/stretchr/testify/assert"
-	"testing"
 )
 
 func TestFirehoseApply(t *testing.T) {
@@ -25,5 +27,8 @@ func TestFirehoseApply(t *testing.T) {
 	assert.Equal(t, firehose_disabled_output, "")
 
 	firehose_enabled_output := terraform.Output(t, terratestOptions, "firehose_enabled")
-	assert.Equal(t, firehose_enabled_output, "arn:aws:firehose:us-east-1:000000000000:deliverystream/firehose_enabled")
+	assert.Regexp(t,
+		regexp.MustCompile(fmt.Sprintf("arn:aws:firehose:us-east-1:\\d{12}:deliverystream/firehose_enabled")),
+		firehose_enabled_output,
+	)
 }

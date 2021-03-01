@@ -1,11 +1,14 @@
 provider "aws" {
 }
 
+resource "random_pet" "s3_bucket" {
+}
+
 data "aws_caller_identity" "current" {}
 data "aws_region" "current" {}
 
 resource "aws_s3_bucket" "b" {
-  bucket = "ct-my-tf-test-bucket"
+  bucket = "ct-firehose-test-${random_pet.s3_bucket.id}"
   acl    = "private"
 }
 

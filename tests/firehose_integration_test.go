@@ -21,7 +21,7 @@ func TestFirehoseApply(t *testing.T) {
 	defer terraform.Destroy(t, terratestOptions)
 
 	output := terraform.InitAndApply(t, terratestOptions)
-	assert.Contains(t, output, "Apply complete! Resources: 4 added, 0 changed, 0 destroyed.")
+	assert.Contains(t, output, "Apply complete! Resources: 5 added, 0 changed, 0 destroyed.")
 
 	firehose_disabled_output := terraform.Output(t, terratestOptions, "firehose_disabled")
 	assert.Equal(t, firehose_disabled_output, "")
